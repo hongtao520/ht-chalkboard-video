@@ -1,0 +1,4 @@
+interface:
+  display_name: "HT Chalkboard Video"
+  short_description: "使用 Fish 原速旁白制作同步的中文粉笔动画视频"
+  default_prompt: "Use $ht-chalkboard-video to create a Chinese chalkboard explainer with native-speed Fish Audio narration and word-timed animation."
