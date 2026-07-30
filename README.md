@@ -2,9 +2,8 @@
 
 使用 **Fish Audio + Remotion** 制作中文粉笔黑板风格的知识讲解视频。
 
-它复用 `chalkboard-video` 的手绘视觉、逐词字幕、动画和轻量音效规范，
-但将旁白统一替换为 Fish Audio。默认音色是适合 AI 知识讲解的
-**短视频知识男声**。
+仓库已内置完整的粉笔视觉规则、Remotion 模板、逐词字幕、动画和轻量
+音效，不依赖其他 Skill。默认旁白是 Fish Audio 的**短视频知识男声**。
 
 ## 示例
 
@@ -32,8 +31,7 @@ cd ~/.codex/skills/ht-chalkboard-video
 
 - Python 3.9+
 - `ffmpeg`
-- Remotion 项目环境
-- 已安装的 `chalkboard-video` Skill
+- Node.js 与 Remotion 项目环境
 
 ## 配置 Fish Audio
 
@@ -61,7 +59,7 @@ export FISH_API_KEY="your-key"
 
 ## 默认音频配置
 
-音频配置沿用 Vox Agent 的 Fish Audio 参数结构：
+默认音频配置：
 
 ```json
 {
@@ -125,8 +123,8 @@ python3 scripts/fish_narrate.py \
 使用 Fish Audio 默认男声，保持原始语速，让字幕和画面跟随旁白同步。
 ```
 
-Codex 会读取 [SKILL.md](./SKILL.md)，继承 `chalkboard-video` 的视觉制作
-规则，并使用本仓库的 Fish Audio 配音配置。
+Codex 会读取 [SKILL.md](./SKILL.md)，直接使用本仓库内置的视觉规则、
+Remotion 模板和 Fish Audio 配音配置。
 
 ## 安全说明
 

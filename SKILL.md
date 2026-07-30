@@ -5,19 +5,32 @@ description: Create or revoice Chinese chalkboard-style Remotion explainer video
 
 # HT Chalkboard Video
 
-Create the same visual style as `chalkboard-video`, with one intentional
-override: generate narration through Fish Audio using the configuration in
-[references/voice.md](references/voice.md).
+Create a complete Chinese chalkboard explainer with the bundled Remotion
+templates, visual rules, captions, SFX, and Fish Audio narration. This skill is
+self-contained and must not call or read another installed skill.
 
-## Base workflow
+## Core workflow
 
-1. Locate and read the installed `chalkboard-video/SKILL.md`. Check
-   `$CODEX_HOME/skills/chalkboard-video/SKILL.md`, then
-   `~/.codex/skills/chalkboard-video/SKILL.md`.
-2. Follow every visual, animation, transcription, caption, SFX, layout, and
-   verification rule from that skill without modification.
-3. Override only narration generation with the configuration in
-   [references/voice.md](references/voice.md).
+1. Read [rules/creative-direction.md](rules/creative-direction.md) and
+   [rules/pipeline.md](rules/pipeline.md).
+2. Generate Fish narration with [references/voice.md](references/voice.md).
+3. Transcribe that exact audio and build word-timed caption chunks with the
+   bundled `templates/transcribe.mjs` and `templates/build-words.mjs`.
+4. Split the transcript into 6–15 second boards and design one visual idea per
+   board.
+5. Build from the bundled Remotion templates. Use
+   [rules/style.md](rules/style.md), [rules/layouts.md](rules/layouts.md),
+   [rules/primitives.md](rules/primitives.md), and
+   [rules/characters.md](rules/characters.md) as needed.
+6. Add captions and quiet scene-matched SFX using
+   [rules/captions.md](rules/captions.md) and [rules/sound.md](rules/sound.md).
+7. Type-check, render representative stills, inspect them, then render the
+   final video.
+
+Start new projects from `templates/ExampleVideo.tsx`; copy only the required
+templates into the project. All animation must be a deterministic function of
+`useCurrentFrame()`. Never use CSS animation, wall-clock time, `Math.random()`,
+or `Date.now()`.
 
 ## Generate narration
 
@@ -60,7 +73,7 @@ python3 scripts/fish_narrate.py \
 
 ## Verification
 
-Validate the base project as required by `chalkboard-video`, then verify:
+Run `npx tsc --noEmit`, render and inspect key stills, then verify:
 
 - Fish voice is the only narration source.
 - Narration remains at native Fish speed and pitch.
